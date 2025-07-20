@@ -84,8 +84,10 @@ function renderFolders() {
             <div class="folder-sets">
                 ${setsHTML}
             </div>
-            <button onclick="addSetToFolder('${folder.name}')">Add Set</button>
-            <button onclick="removeSetFromFolder('${folder.name}')">Remove Set</button>
+            <div class="folder-actions">
+                <button onclick="addSetToFolder('${folder.name}')"><i class="fas fa-plus"></i> Add Set</button>
+                <button onclick="removeSetFromFolder('${folder.name}')"><i class="fas fa-minus"></i> Remove Set</button>
+            </div>
         `;
         foldersContainer.appendChild(folderElement);
     });
@@ -508,6 +510,7 @@ function checkAnswer() {
     document.getElementById('user-answer').disabled = true;
     document.getElementById('check-answer-btn').style.display = 'none';
     document.getElementById('next-card-btn').style.display = 'inline-block';
+    document.querySelector('.flashcard-container').classList.add('answered');
 }
 
 function nextCard() {
@@ -517,6 +520,7 @@ function nextCard() {
     document.getElementById('check-answer-btn').style.display = 'inline-block';
     document.getElementById('next-card-btn').style.display = 'none';
     document.getElementById('feedback').innerHTML = '';
+    document.querySelector('.flashcard-container').classList.remove('answered');
     showFlashcard();
 }
 
